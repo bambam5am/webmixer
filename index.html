@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Mixer</title>
+    <style>
+        body { margin: 0; }
+        .videos { display: flex; }
+        .video { width: 50%; }
+        #crossfader { width: 100%; margin: 20px; }
+    </style>
+</head>
+<body>
+    <div class="videos">
+        <div class="video" id="player1"></div>
+        <div class="video" id="player2"></div>
+    </div>
+    <input type="range" id="crossfader" min="0" max="1" value="0.5" step="0.01">
+    
+    <script>
+        // YouTube setup
+        let players = [];
+        function onYouTubeIframeAPIReady() {
+            players[0] = new YT.Player('player1', {
+                height: '390',
+                width: '640',
+                videoId: 'dQw4w9WgXcQ' // Replace this ID
+            });
+            players[1] = new YT.Player('player2', {
+                videoId: 'dQw4w9WgXcQ' // Replace this ID
+            });
+        }
+        
+        // Load YouTube script
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+    </script>
+</body>
+</html>
